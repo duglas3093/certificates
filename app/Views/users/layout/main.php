@@ -14,18 +14,17 @@
 
 <body>
     <style>
-    body {
-        background: #071e36;
-    }
-    .navbar {
-        background: #041221;
-    }
-    .footer {
-        background: #041221;
-        color: #fff;
-    }
+        body {
+            background: #071e36;
+        }
+        .navbar {
+            background: #041221;
+        }
+        .footer {
+            background: #041221;
+            color: #fff;
+        }
     </style>
-
     <!-- START NAV -->
     <nav class="navbar">
         <div class="container">
