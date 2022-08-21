@@ -41,6 +41,11 @@ class Users extends Migration
                 'constraint'    =>'60',
                 'null'          =>false,
             ],
+            'user_islogin'=>[
+                'type'          =>'INT',
+                'constraint'    =>12,
+                'null'          =>false,
+            ],
             'rol_id'=>[
                 'type'          =>'INT',
                 'constraint'    =>12,
