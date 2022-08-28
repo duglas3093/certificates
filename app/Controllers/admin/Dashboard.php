@@ -8,6 +8,7 @@ class Dashboard extends BaseController
 {
     public function index()
     {
-        return view('admin/dashboard/index');
+        $data['session'] = session()->get();
+        return view('admin/dashboard/index',$data);
     }
 }
