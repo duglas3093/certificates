@@ -1,4 +1,4 @@
-<aside class="menu is-hidden-mobile has-background-light" style="margin-left: 5px;">
+<aside class="menu is-hidden-mobile " style="margin-left: 5px;">
     <p class="menu-label">
         General
     </p>

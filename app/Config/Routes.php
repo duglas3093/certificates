@@ -46,7 +46,7 @@ $routes->group('auth',['namespace'=>'App\Controllers\Auth'],function($routes){
 });
 
 
-$routes->group('admin',['namespace' => 'App\Controllers\admin','filter'=>'auth:Admin'],function($routes){
+$routes->group('admin',['namespace' => 'App\Controllers\admin','filter'=>'auth:admin'],function($routes){
     $routes->get('dashboard','Dashboard::index');
     $routes->get('students','Student::index');
 });

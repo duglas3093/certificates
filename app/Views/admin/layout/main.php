@@ -16,6 +16,8 @@
 </head>
 
 <body>
+    <style>
+    </style>
     <!-- START NAV -->
     <?= $this->include('admin/layout/header') ?>
     <!-- END NAV -->
@@ -24,7 +26,9 @@
             <?= $this->include('Admin/layout/menu') ?>
         </div>
         <div class="column is-10">
-            <?= $this->renderSection('content') ?>
+            <section class="section">
+                <?= $this->renderSection('content') ?>
+            </section>
         </div>
     </div>
     <section class="section">

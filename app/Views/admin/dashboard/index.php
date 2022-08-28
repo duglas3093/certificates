@@ -11,7 +11,7 @@
             
         </div>
     </article> -->
-    <section class="hero is-info welcome is-small">
+    <section class="hero is-info welcome is-small" style="margin-bottom: 20px;">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
@@ -27,110 +27,56 @@
         <div class="tile is-parent">
             <article class="tile is-child box">
                 <p class="title">439k</p>
-                <p class="subtitle">Users</p>
+                <p class="subtitle">Estudiantes</p>
             </article>
         </div>
         <div class="tile is-parent">
             <article class="tile is-child box">
                 <p class="title">59k</p>
-                <p class="subtitle">Products</p>
+                <p class="subtitle">Cursos</p>
             </article>
         </div>
         <div class="tile is-parent">
             <article class="tile is-child box">
                 <p class="title">3.4k</p>
-                <p class="subtitle">Open Orders</p>
-            </article>
-        </div>
-        <div class="tile is-parent">
-            <article class="tile is-child box">
-                <p class="title">19</p>
-                <p class="subtitle">Exceptions</p>
+                <p class="subtitle">Certificados</p>
             </article>
         </div>
     </div>
 </section>
 <div class="columns">
-    <div class="column is-6">
+    <div class="column is-12">
         <div class="card events-card">
             <header class="card-header">
                 <p class="card-header-title">
-                    Events
+                <span class="title">Ultimos cursos <i class="fa-solid fa-chalkboard-user"></i></span>
                 </p>
-                <a href="#" class="card-header-icon" aria-label="more options">
-                    <span class="icon">
-                        <i class="fa fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                </a>
             </header>
             <div class="card-table">
                 <div class="content">
                     <table class="table is-fullwidth is-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Fecha</th>
+                                <th>Creado Por</th>
+                            </tr>
+                        </thead>
                         <tbody>
                             <tr>
-                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                <td>Lorum ipsum dolem aire</td>
-                                <td class="level-right"><a class="button is-small is-primary"
-                                        href="#">Action</a></td>
-                            </tr>
-                            <tr>
-                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                <td>Lorum ipsum dolem aire</td>
-                                <td class="level-right"><a class="button is-small is-primary"
-                                        href="#">Action</a></td>
-                            </tr>
-                            <tr>
-                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                <td>Lorum ipsum dolem aire</td>
-                                <td class="level-right"><a class="button is-small is-primary"
-                                        href="#">Action</a></td>
-                            </tr>
-                            <tr>
-                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                <td>Lorum ipsum dolem aire</td>
-                                <td class="level-right"><a class="button is-small is-primary"
-                                        href="#">Action</a></td>
-                            </tr>
-                            <tr>
-                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                <td>Lorum ipsum dolem aire</td>
-                                <td class="level-right"><a class="button is-small is-primary"
-                                        href="#">Action</a></td>
-                            </tr>
-                            <tr>
-                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                <td>Lorum ipsum dolem aire</td>
-                                <td class="level-right"><a class="button is-small is-primary"
-                                        href="#">Action</a></td>
-                            </tr>
-                            <tr>
-                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                <td>Lorum ipsum dolem aire</td>
-                                <td class="level-right"><a class="button is-small is-primary"
-                                        href="#">Action</a></td>
-                            </tr>
-                            <tr>
-                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                <td>Lorum ipsum dolem aire</td>
-                                <td class="level-right"><a class="button is-small is-primary"
-                                        href="#">Action</a></td>
-                            </tr>
-                            <tr>
-                                <td width="5%"><i class="fa fa-bell-o"></i></td>
-                                <td>Lorum ipsum dolem aire</td>
-                                <td class="level-right"><a class="button is-small is-primary"
-                                        href="#">Action</a></td>
+                                <td width="5%">1</td>
+                                <td class="level-left">Diplomado en trabajo social forence y pericial</td>
+                                <td>17-08-2022</td>
+                                <td >Marcelo</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <footer class="card-footer">
-                <a href="#" class="card-footer-item">View All</a>
-            </footer>
         </div>
     </div>
-    <div class="column is-6">
+    <!-- <div class="column is-6">
         <div class="card">
             <header class="card-header">
                 <p class="card-header-title">
@@ -181,6 +127,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 <?= $this->endSection() ?>
