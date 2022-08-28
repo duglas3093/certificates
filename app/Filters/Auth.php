@@ -35,16 +35,18 @@ class Auth implements FilterInterface
 
         }
         $model = model('UsersModel');
-        if(!$user = $model->getUserBy('id',session()->id_user)){
+        if(!$user = $model->getUserBy('user_id',session()->user_id)){
             session()->destroy();
             return redirect()->route('login')->with('msg',[
                 'type'  => 'danger',
                 'body'  => 'El usuario actualmente no esta disponible'
             ]);
         }
-        // dd($user->getRole()['name_group']);
+        // dd($user->getRole()['rol_description']);
+        // dd(session()->user_id);
         // if(!in_array($user->getRole()->name_group,$arguments)){
-        if(!in_array($user->getRole()['name_group'],$arguments)){
+        // dd($user);
+        if(!in_array($user->getRole()['rol_description'],$arguments)){
             throw PageNotFoundException::forPageNotFound();
         }
     }

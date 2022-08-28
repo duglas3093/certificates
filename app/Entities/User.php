@@ -16,6 +16,6 @@ class User extends Entity{
 
     public function getRole(){
         $model = model('RolsModel');
-        return $model->where('rol_id',$this->rol)->first();
+        return $model->where('rol_id',$this->rol_id)->first();
     }
 }
