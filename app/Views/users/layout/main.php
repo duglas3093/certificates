@@ -14,6 +14,10 @@
 
 <body>
     <style>
+        html, body{
+            height:100%;
+            margin: 0;
+        }
         body {
             background: #071e36;
         }
@@ -23,48 +27,19 @@
         .footer {
             background: #041221;
             color: #fff;
+            width: 100vw;
+            position: absolute;
+            bottom: 0;
         }
     </style>
-    <!-- START NAV -->
-    <nav class="navbar">
+    <?= $this->include('users/layout/header') ?>
+    <?= $this->renderSection('content') ?>
+    <!-- <section class="section">
         <div class="container">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="#">
-                    <img src="https://cdn.emk.dev/templates/bulma-logo-light.png" alt="Logo">
-                </a>
-                <span class="navbar-burger burger" data-target="navbarMenu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-            </div>
-            <div id="navbarMenu" class="navbar-menu">
-                <div class="navbar-end">
-                    <a class="navbar-item is-active">
-                        Home
-                    </a>
-                    <a class="navbar-item">
-                        Examples
-                    </a>
-                    <a class="navbar-item">
-                        Features
-                    </a>
-                    <a class="navbar-item">
-                        Team
-                    </a>
-                    <a class="navbar-item">
-                        Archives
-                    </a>
-                    <a class="navbar-item">
-                        Help
-                    </a>
-                </div>
-            </div>
         </div>
-    </nav>
-    <!-- END NAV -->
-
-    <div class="container">
+    </section> -->
+    <?= $this->include('users/layout/footer') ?>
+    <!-- <div class="container">
         <div class="section">
             <div class="columns">
                 <div class="column has-text-centered">
@@ -121,17 +96,17 @@
         </div>
     </footer>
 
-    <script src="../js/cardsData.js"></script>
+    <script src="../js/cardsData.js"></script> -->
 
     <!-- Using Vue to populate cards to reduce redundant code -->
-    <script>
+    <!-- <script>
         var app = new Vue({
             el: '#app',
             data: {
                 cardData: cardsData
             }
         })
-    </script>
+    </script> -->
 </body>
 
 </html>
