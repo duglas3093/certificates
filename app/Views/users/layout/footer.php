@@ -1,3 +1,8 @@
+<style>
+    .footer{
+        padding: 3rem 1.5rem 3rem !important;
+    }
+</style>
 <footer class="footer">
     <div class="content has-text-centered">
         <p>

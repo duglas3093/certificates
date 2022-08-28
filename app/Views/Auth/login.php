@@ -125,6 +125,13 @@ Login
     <div class="container">
         <div class="columns is-centered">
             <div class="column is-half">
+                <?php if((session('msg'))){ ?>
+                    <article class="message is-<?= session('msg.type') ?>">
+                        <div class="message-body">
+                            <?= session('msg.body ') ?>
+                        </div>
+                    </article>
+                <?php } ?>
                 <figure style="margin-bottom: 40px;">
                     <!-- <img src="https://placeimg.com/640/480/any" alt="Melton Hill Lake"> -->
                     <img style="display: block; margin: 0px auto;" src="https://virtual.certificatebolivia.com.bo/pluginfile.php/1/core_admin/logo/0x150/1641502145/logo%20certificate%20srl%20transparente%20con%20brillo.png" alt="Logo">
