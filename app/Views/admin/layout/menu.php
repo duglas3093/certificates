@@ -4,13 +4,17 @@
     </p>
     <ul class="menu-list">
         <li>
-            <a href="<?= base_url(route_to('admin/dashboard')) ?>" class="is-active">Inicio</a>
+            <a href="<?= base_url(route_to('admin/dashboard')) ?>" class="<?= service('request')->uri->getPath() == 'admin/dashboard' ? 'is-active':'' ?>">
+                Inicio
+            </a>
         </li>
         <li>
-            <a href="<?= base_url(route_to('admin/students')) ?>">Estudiantes</a>
+            <a href="<?= base_url(route_to('admin/students')) ?>" class="<?= service('request')->uri->getPath() == 'admin/students' ? 'is-active':'' ?>">
+                Estudiantes
+            </a>
         </li>
         <li>
-            <a href="#">Cursos</a>
+            <a href="#" class="<?= service('request')->uri->getPath() == 'admin/courses' ? 'is-active':'' ?>">Cursos</a>
         </li>
         <li>
             <a>Certificados</a>

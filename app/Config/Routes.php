@@ -48,7 +48,12 @@ $routes->group('auth',['namespace'=>'App\Controllers\Auth'],function($routes){
 
 $routes->group('admin',['namespace' => 'App\Controllers\admin','filter'=>'auth:admin'],function($routes){
     $routes->get('dashboard','Dashboard::index');
+    // Student
     $routes->get('students','Student::index');
+    $routes->get('add_student','Student::add');
+    $routes->post('store_student','Student::store');
+    $routes->get('edit_student/(:num)','Student::edit/$1');
+    $routes->post('update_student','Student::update');
 });
 
 /*

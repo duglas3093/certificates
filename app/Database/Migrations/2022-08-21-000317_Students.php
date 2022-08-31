@@ -46,7 +46,12 @@ class Students extends Migration
                 'constraint'    =>'150',
                 'null'          =>false,
             ],
-            'gender_id'=>[
+            'student_photo'=>[
+                'type'          =>'VARCHAR',
+                'constraint'    =>'100',
+                'null'          =>true,
+            ],
+            'genere_id'=>[
                 'type'          =>'INT',
                 'constraint'    =>12,
                 'null'          =>false,

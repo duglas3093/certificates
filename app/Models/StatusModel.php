@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class StatusModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'statuses';
+    protected $table            = 'status';
     protected $primaryKey       = 'status_id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;

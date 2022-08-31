@@ -1,7 +1,7 @@
 <?= $this->extend('Admin/layout/main') ?>
 
 <?= $this->section('title') ?>
-    Dashboard admin
+    Dashboard
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>

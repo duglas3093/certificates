@@ -21,7 +21,9 @@ class StudentsModel extends Model
         'student_cicomplement',
         'student_celphone',
         'student_email',
-        'gender_id',
+        'student_photo',
+        'genere_id',
+        'status_id',
         'user_id',
     ];
 
