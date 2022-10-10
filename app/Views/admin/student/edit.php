@@ -1,7 +1,7 @@
 <?= $this->extend('Admin/layout/main') ?>
 
 <?= $this->section('title') ?>
-    
+    Editando estudiante
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>

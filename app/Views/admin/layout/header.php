@@ -1,46 +1,82 @@
-<nav class="navbar has-background-primary" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
-            <img src="https://virtual.certificatebolivia.com.bo/pluginfile.php/1/core_admin/logo/0x150/1641502145/logo%20certificate%20srl%20transparente%20con%20brillo.png"
-                alt="Certificate Bolivia">
-        </a>
-        <div class="navbar-burger burger" data-target="navMenu">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </div>
+<!-- <div class="navbar-brand">
+    <a class="navbar-item is-hidden-desktop jb-aside-mobile-toggle">
+        <span class="icon"><i class="mdi mdi-forwardburger mdi-24px"></i></span>
+    </a>
+    <div class="navbar-item has-control">
+        <div class="control"><input placeholder="Search everywhere..." class="input"></div>
     </div>
-
-    <div id="navMenu" class="navbar-menu">
-        <div class="navbar-end">
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                    <img class="is-rounded" src="https://source.unsplash.com/random/96x96" alt="Placeholder image">&nbsp;
-                    <?= ucfirst($session['user_lastname']) ?>
+</div>
+<div class="navbar-brand is-right">
+    <a class="navbar-item is-hidden-desktop jb-navbar-menu-toggle" data-target="navbar-menu">
+        <span class="icon"><i class="mdi mdi-dots-vertical"></i></span>
+    </a>
+</div> -->
+<div class="navbar-menu fadeIn animated faster" id="navbar-menu">
+    <div class="navbar-end">
+        <!-- <div class="navbar-item has-dropdown has-dropdown-with-icons has-divider is-hoverable">
+            <a class="navbar-link is-arrowless">
+                <span class="icon"><i class="mdi mdi-menu"></i></span>
+                <span>Sample Menu</span>
+                <span class="icon">
+                    <i class="mdi mdi-chevron-down"></i>
+                </span>
+            </a>
+            <div class="navbar-dropdown">
+                <a href="profile.html" class="navbar-item">
+                    <span class="icon"><i class="mdi mdi-account"></i></span>
+                    <span>My Profile</span>
                 </a>
-
-                <div class="navbar-dropdown">
-                    <a class="navbar-item">
-                        <i class="fa-solid fa-user"></i>&nbsp;Perfil
-                    </a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item" href="<?= base_url(route_to('signout')) ?>">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;Cerrar Sesión
-                    </a>
-
+                <a class="navbar-item">
+                    <span class="icon"><i class="mdi mdi-settings"></i></span>
+                    <span>Settings</span>
+                </a>
+                <a class="navbar-item">
+                    <span class="icon"><i class="mdi mdi-email"></i></span>
+                    <span>Messages</span>
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">
+                    <span class="icon"><i class="mdi mdi-logout"></i></span>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </div> -->
+        <div class="navbar-item has-dropdown has-dropdown-with-icons has-divider has-user-avatar is-hoverable">
+            <a class="navbar-link is-arrowless">
+                <div class="is-user-avatar">
+                    <img src="https://avatars.dicebear.com/v2/initials/john-doe.svg" alt="John Doe">
                 </div>
+                <div class="is-user-name"><span><?= ucfirst($session['user_lastname']) ?></span></div>
+                <span class="icon"><i class="mdi mdi-chevron-down"></i></span>
+            </a>
+            <div class="navbar-dropdown">
+                <a href="profile.html" class="navbar-item">
+                    <span class="icon"><i class="mdi mdi-account"></i></span>
+                    <span>My Profile</span>
+                </a>
+                <a class="navbar-item">
+                    <span class="icon"><i class="mdi mdi-settings"></i></span>
+                    <span>Settings</span>
+                </a>
+                <a class="navbar-item">
+                    <span class="icon"><i class="mdi mdi-email"></i></span>
+                    <span>Messages</span>
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" href="<?= base_url(route_to('signout')) ?>">
+                    <span class="icon"><i class="mdi mdi-logout"></i></span>
+                    <span>Log Out</span>
+                </a>
             </div>
         </div>
+        <!-- <a href="https://justboil.me/bulma-admin-template/free-html-dashboard/" title="About"
+            class="navbar-item has-divider is-desktop-icon-only">
+            <span class="icon"><i class="mdi mdi-help-circle-outline"></i></span>
+            <span>About</span>
+        </a> -->
+        <!-- <a title="Log out" class="navbar-item is-desktop-icon-only">
+            <span class="icon"><i class="mdi mdi-logout"></i></span>
+            <span>Log out</span>
+        </a> -->
     </div>
-</nav>
-
-<script>
-    (function () {
-        var burger = document.querySelector('.burger');
-        var menu = document.querySelector('#' + burger.dataset.target);
-        burger.addEventListener('click', function () {
-            burger.classList.toggle('is-active');
-            menu.classList.toggle('is-active');
-        });
-    })();
-</script>
+</div>

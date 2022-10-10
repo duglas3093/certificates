@@ -4,7 +4,7 @@
             <input name="student_id" value="<?= isset($student['student_id']) ? $student['student_id']:"" ?>" type="hidden">
             <label class="label" for="student_name">Nombre(s)<span class="has-text-danger">*</span> </label>
             <div class="control has-icons-left has-icons-right">
-                <input class="input" name="student_name" value="<?= old('student_name') ?? (isset($student['student_name']) ? $student['student_name']:"") ?>" type="text" placeholder="Nombre(s) del estudiante" value="">
+                <input class="input" name="student_name" value="<?= old('student_name') ?? (isset($student['student_name']) ? $student['student_name']:"") ?>" type="text" placeholder="Nombre(s) del estudiante" onkeyup="mayus(this);">
                 <span class="icon is-small is-left">
                     <i class="fa-solid fa-address-card"></i>
                 </span>
@@ -16,7 +16,7 @@
         <div class="field">
             <label class="label" for="student_lastname">Apellido(s)<span class="has-text-danger">*</span></label>
             <div class="control has-icons-left has-icons-right">
-                <input class="input" name="student_lastname" value="<?= old('student_lastname') ?? (isset($student['student_lastname']) ? $student['student_lastname']:"") ?>" type="text" placeholder="Apellido(s) del estudiante">
+                <input class="input" name="student_lastname" value="<?= old('student_lastname') ?? (isset($student['student_lastname']) ? $student['student_lastname']:"") ?>" type="text" placeholder="Apellido(s) del estudiante" onkeyup="mayus(this);">
                 <span class="icon is-small is-left">
                     <i class="fa-solid fa-address-card"></i>
                 </span>
@@ -28,7 +28,7 @@
         <div class="field">
             <label class="label" for="student_ci">Carnet de Identidad<span class="has-text-danger">*</span></label>
             <div class="control has-icons-left">
-                <input class="input" name="student_ci" value="<?= old('student_ci') ?? (isset($student['student_ci']) ? $student['student_ci']:"") ?>" type="text" placeholder="CI del estudiante">
+                <input class="input" name="student_ci" value="<?= old('student_ci') ?? (isset($student['student_ci']) ? $student['student_ci']:"") ?>" type="number" placeholder="CI del estudiante" min="0">
                 <span class="icon is-small is-left">
                     <i class="fa-solid fa-address-card"></i>
                 </span>
@@ -40,7 +40,7 @@
         <div class="field">
             <label class="label" for="student_cicomplement">Complemento</label>
             <div class="control">
-                <input class="input" name="student_cicomplement" value="<?= old('student_cicomplement') ?? (isset($student['student_cicomplement']) ? $student['student_cicomplement']:"") ?>" type="text" placeholder="Complemento de CI">
+                <input class="input" name="student_cicomplement" value="<?= old('student_cicomplement') ?? (isset($student['student_cicomplement']) ? $student['student_cicomplement']:"") ?>" type="text" placeholder="Complemento de CI" onkeyup="mayus(this);">
             </div>
             <p class="is-danger help"><?= session('errors.student_cicomplement') ?></p>
         </div>
@@ -80,7 +80,7 @@
         <div class="field">
             <label class="label" for="student_email">Correo Electr&oacute;nico</label>
             <div class="control has-icons-left has-icons-right">
-                <input class="input" name="student_email" value="<?= old('student_email') ?? (isset($student['student_email']) ? $student['student_email']:"") ?>" type="text" placeholder="Email del estudiante">
+                <input class="input" name="student_email" value="<?= old('student_email') ?? (isset($student['student_email']) ? $student['student_email']:"") ?>" type="email" placeholder="Email del estudiante">
                 <span class="icon is-small is-left">
                     <i class="fa-solid fa-at"></i>
                 </span>
@@ -124,7 +124,7 @@
         <div class="field">
             <p class="control">
                 <input type="submit" class="button is-success" value="<?= isset($student) ? "Actualizar":"Crear" ?>">
-                <a href="<?= base_url(route_to('admin/student')) ?>" class="button is-danger">
+                <a href="javascript:history.back()" class="button is-danger">
                     Cancelar
                 </a>
             </p>
@@ -132,8 +132,8 @@
     </div>
 </div>
 
-
-
-
-
-
+<script>
+    function mayus(e) {
+        e.value = e.value.toUpperCase();
+    }
+</script>

@@ -1,112 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cards List - Bulma Templates</title>
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-    <script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <link rel="stylesheet" href="../css/cards.css">
+    <title></title>
+
+    <!-- mobile responsive meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- ** Plugins Needed for the Project ** -->
+    <!-- plugins -->
+    <link rel="stylesheet" href="<?= base_url('plugins/bulma/bulma.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('plugins/themify-icons/themify-icons.css')?>">
+    <!-- Main Stylesheet -->
+    <link href="<?=base_url('css/style.css')?>" rel="stylesheet">
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="<?=base_url('images/favicon.ico')?>" type="image/x-icon">
+    <link rel="icon" href="<?=base_url('images/favicon.ico')?>" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
 </head>
 
 <body>
-    <style>
-        html, body{
-            height:100%;
-            margin: 0;
-        }
-        body {
-            background: #071e36;
-        }
-        .navbar {
-            background: #041221;
-        }
-        .footer {
-            background: #041221;
-            color: #fff;
-            width: 100vw;
-            position: absolute;
-            bottom: 0;
-        }
-    </style>
+
     <?= $this->include('users/layout/header') ?>
+
     <?= $this->renderSection('content') ?>
-    <!-- <section class="section">
-        <div class="container">
-        </div>
-    </section> -->
+    
+    <!-- /call to action -->
     <?= $this->include('users/layout/footer') ?>
-    <!-- <div class="container">
-        <div class="section">
-            <div class="columns">
-                <div class="column has-text-centered">
-                    <h1 class="title" style="color: ghostwhite;">Bulma Card Layout Template</h1><br>
-                </div>
-            </div>
-            <div id="app" class="row columns is-multiline">
-                <div v-for="card in cardData" key="card.id" class="column is-4">
-                    <div class="card large">
-                        <div class="card-image">
-                            <figure class="image is-16by9">
-                                <img :src="card.image" alt="Image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-left">
-                                    <figure class="image is-48x48">
-                                        <img :src="card.avatar" alt="Image">
-                                    </figure>
-                                </div>
-                                <div class="media-content">
-                                    <p class="title is-4 no-padding">{{card.user.title}}</p>
-                                    <p>
-                                        <span class="title is-6">
-                                            <a :href=`http://twitter.com/${card.user.handle}`> {{card.user.handle}} </a>
-                                                </span> </p> <p class="subtitle is-6">{{card.user.title}}</p>
-                                </div>
-                            </div>
-                            <div class="content">
-                                {{card.content}}
-                                <div class="background-icon"><span class="icon-twitter"></span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer class="footer">
-        <div class="container">
-            <div class="content has-text-centered">
-                <div class="soc">
-                    <a href="#"><i class="fa fa-github-alt fa-lg" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-youtube fa-lg" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a>
-                    <a href="#"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
-                </div>
-                <p>
-                    <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>.
-                    The source code is licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. <br>
-                </p>
-            </div>
-        </div>
-    </footer>
+    <!-- plugins -->
+    <script src="<?=base_url('plugins/jQuery/jquery.min.js')?>"></script>
+    <script src="<?=base_url('plugins/masonry/masonry.min.js')?>"></script>
+    <script src="<?=base_url('plugins/clipboard/clipboard.min.js')?>"></script>
+    <script src="<?=base_url('plugins/match-height/jquery.matchHeight-min.js')?>"></script>
 
-    <script src="../js/cardsData.js"></script> -->
+    <!-- Main Script -->
+    <script src="<?=base_url('js/script.js')?>"></script>
 
-    <!-- Using Vue to populate cards to reduce redundant code -->
-    <!-- <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                cardData: cardsData
-            }
-        })
-    </script> -->
 </body>
 
 </html>

@@ -6,9 +6,11 @@ use App\Controllers\BaseController;
 use App\Entities\Student as EntitiesStudent;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
-class Student extends BaseController
-{
+class Student extends BaseController{
     private $session;
+    private const PAGINATION = 10;
+    private const STATUS = 4;
+
     public function __construct(){
         $session = session()->get();
     }
@@ -16,8 +18,10 @@ class Student extends BaseController
     public function index(){
         $data['session'] = session()->get();
         $studentModel = model('StudentsModel');
-        $data['students'] = $studentModel->findAll();
+        $data['students'] = $studentModel->orderBy('student_lastname')->paginate(self::PAGINATION);
+        $data['pager'] = $studentModel->pager;
         return view('admin/student/index',$data);
+        
     }
     
     public function add(){
@@ -116,7 +120,8 @@ class Student extends BaseController
         if ($imageFile = $this->request->getFile('student_photo')) {
             if ($imageFile->isValid() && !$imageFile->hasMoved()) {
                 $newName = $imageFile->getRandomName();
-                $imageFile->move(WRITEPATH."uploads/images/students/",$newName);
+                // $imageFile->move(WRITEPATH."uploads/images/students/",$newName);
+                $imageFile->move(ROOTPATH."public/uploads/images/students/",$newName);
             }
         }
         return $newName;

@@ -36,6 +36,7 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('contact', 'Home::contact');
 
 $routes->group('auth',['namespace'=>'App\Controllers\Auth'],function($routes){
     $routes->get('register','Register::index',['as'=>'register']);
@@ -48,12 +49,28 @@ $routes->group('auth',['namespace'=>'App\Controllers\Auth'],function($routes){
 
 $routes->group('admin',['namespace' => 'App\Controllers\admin','filter'=>'auth:admin'],function($routes){
     $routes->get('dashboard','Dashboard::index');
-    // Student
+    // Students
     $routes->get('students','Student::index');
     $routes->get('add_student','Student::add');
     $routes->post('store_student','Student::store');
     $routes->get('edit_student/(:num)','Student::edit/$1');
     $routes->post('update_student','Student::update');
+    // courses
+    $routes->get('courses','Course::index');
+    $routes->get('add_course','Course::add');
+    $routes->post('store_course','Course::store');
+    $routes->get('edit_course/(:num)','Course::edit/$1');
+    $routes->get('certificates_course/(:num)','Course::certificatesCourse/$1');
+    $routes->post('update_course','Course::update');
+    $routes->post('delete_course','Course::delete');
+    //Models
+    $routes->get('models','Course::index');
+    $routes->get('add_course','Course::add');
+    $routes->post('store_course','Course::store');
+    $routes->get('edit_course/(:num)','Course::edit/$1');
+    $routes->get('certificates_course/(:num)','Course::certificatesCourse/$1');
+    $routes->post('update_course','Course::update');
+    $routes->post('delete_course','Course::delete');
 });
 
 /*

@@ -1,24 +1,30 @@
-<!-- START NAV -->
-<nav class="navbar">
-    <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="<?= base_url(route_to('/')) ?>">
-                <img src="https://virtual.certificatebolivia.com.bo/pluginfile.php/1/core_admin/logo/0x150/1641502145/logo%20certificate%20srl%20transparente%20con%20brillo.png" alt="Logo">
-                <!-- <img src="https://cdn.emk.dev/templates/bulma-logo-light.png" alt="Logo"> -->
-            </a>
-            <span class="navbar-burger burger" data-target="navbarMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
-        </div>
-        <div id="navbarMenu" class="navbar-menu">
-            <div class="navbar-end">
-                <a class="navbar-item is-active" href="<?= base_url(route_to('login')) ?>">
-                    Iniciar Sesión
+<nav class="navbar is-sticky-top navigation" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="index.html">
+                    <img class="img-fluid" src="<?= base_url('images/logo.png') ?>" alt="godocs" width="155px">
+                </a>
+
+                <a role="button" class="navbar-burger burger" aria-expanded="false" data-target="navbar-links">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </a>
             </div>
+
+            <div id="navbar-links" class="navbar-menu">
+                <div class="navbar-start ml-auto">
+                    <a class="navbar-item" href="index.html">Home</a>
+                    <a class="navbar-item" href="list.html">Inner Page</a>
+                    <a class="navbar-item" href="search.html">Search Page</a>
+                </div>
+
+                <div class="navbar-end ml-0">
+                    <div class="navbar-item py-0">
+                        <a href="changelog.html" class="btn btn-sm btn-outline-primary ml-4">changelog</a>
+                        <a href="contact.html" class="btn btn-sm btn-primary ml-4">contact</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</nav>
-    <!-- END NAV -->
+    </nav>

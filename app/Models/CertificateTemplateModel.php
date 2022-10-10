@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CertificateModelosModel extends Model
+class CertificateTemplateModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'certificate_modelos';
+    protected $table            = 'certificate_template';
     protected $primaryKey       = 'certificatemodelo_id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
@@ -15,10 +15,10 @@ class CertificateModelosModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'cetificatemodelo_title',
-        'cetificatemodelo_description',
-        'cetificatemodelo_template',
-        'cetificatemodelo_background',
+        'cetificatetem_title',
+        'cetificatetem_description',
+        'cetificatetem_template',
+        'cetificatetem_background',
         'cetificatetype_id',
         'user_id',
     ];

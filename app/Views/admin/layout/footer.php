@@ -1,9 +1,24 @@
 <footer class="footer">
-    <div class="content has-text-centered">
-        <p>
-            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-        </p>
+    <div class="container-fluid">
+        <div class="level">
+            <div class="level-left">
+                <div class="level-item">
+                    © 2020, JustBoil.me
+                </div>
+                <div class="level-item">
+                    <a href="https://github.com/vikdiesel/admin-one-bulma-dashboard" style="height: 20px">
+                        <img
+                            src="https://img.shields.io/github/v/release/vikdiesel/admin-one-bulma-dashboard?color=%23999">
+                    </a>
+                </div>
+            </div>
+            <div class="level-right">
+                <div class="level-item">
+                    <div class="logo">
+                        <a href="https://justboil.me"><img src="img/justboil-logo.svg" alt="JustBoil.me"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </footer>
