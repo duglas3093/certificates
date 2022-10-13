@@ -1,14 +1,7 @@
 <?= $this->extend('Admin/layout/main') ?>
 
 <?= $this->section('title') ?>
-Cursos
-<?= $this->endSection() ?>
-
-<?= $this->section('content') ?>
-<?= $this->extend('Admin/layout/main') ?>
-
-<?= $this->section('title') ?>
-
+Estudiantes
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -17,17 +10,18 @@ Cursos
     <div class="level">
         <div class="level-left">
             <div class="level-item">
-                <h1 class="title">Cursos</h1>
+                <h1 class="title">Tipos de certificados</h1>
                 
             </div>
         </div>
         <div class="level-right">
             <div class="level-item">
                 <div class="buttons is-right">
-                    <a href="<?= base_url(route_to('admin/add_course')) ?>"  class="button is-primary">
+                    <button class="button is-primary" data-target="addFormModal"
+                        type="button" onclick="formModal('add')">
                         <span class="icon"><i class="fa-solid fa-user-plus"></i></span>
-                        <span>Agregar Curso</span>
-                    </a>
+                        <span>Agregar tipo</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -43,7 +37,7 @@ Cursos
         </article>
     <?php } ?>
 
-    <?php if(sizeof($courses) > 0): ?>
+    <?php if(sizeof($types) > 0): ?>
     <div class="card has-table">
         <div class="card-content">
             <div class="b-table has-pagination">
@@ -57,19 +51,15 @@ Cursos
                                         <span class="check"></span>
                                     </label>
                                 </th>
-                                <!-- <th></th> -->
-                                <th>Curso</th>
-                                <th>Fecha</th>
-                                <th>Creado por</th>
-                                <!-- <th>Email</th> -->
-                                <!-- <th>Created</th> -->
+                                <th>Descripcion</th>
+                                <th>Creado</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php 
                                 $contador = 1;
-                                foreach ($courses as $course):
+                                foreach ($types as $type):
                             ?>
                             <tr>
                                 <td class="is-checkbox-cell">
@@ -78,20 +68,18 @@ Cursos
                                         <span class="check"></span>
                                     </label>
                                 </td>
-                                <td data-label="Curso"><?= "{$course['course_name']}" ?></td>
-                                <td data-label="Fecha"><?= $course['created_at'] ?></td>
-                                <td data-label="Creado por"><?= $course['user_id'] ?></td>
-                                <td class="is-actions-cell">
-                                    <div class="buttons is-right">
-                                        <a class="button is-small is-primary" title="Editar" href="<?= base_url("admin/edit_student/{$course['course_id']}") ?>">
-                                            <span class="icon"><i class="fa-solid fa-pencil"></i></span>
-                                        </a>
-                                        <button class="button is-small is-danger jb-modal" data-target="sample-modal"
-                                            type="button" onclick="showModalDelete(<?= $course['course_id'] ?>,'<?= $course['course_name'] ?>')">
-                                            <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                                        </button>
-                                    </div>
+                                <td><?= $type['certificatetype_description'] ?></td>
+                                <td><?= $type['created_at'] ?></td>
+                                <td>
+                                    <button class="button is-small is-primary" title="Editar" onclick="editCertificateType(<?= $type['certificatetype_id'] ?>)">
+                                        <span class="icon"><i class="fa-solid fa-pencil"></i></span>
+                                    </button>
+                                    <button class="button is-small is-danger jb-modal" data-target="sample-modal"
+                                        type="button" onclick="showModalDelete(<?= $type['certificatetype_id'] ?>)">
+                                        <span class="icon"><i class="mdi mdi-trash-can"></i></span>
+                                    </button>
                                 </td>
+                                
                             </tr>
                             <?php
                                 $contador++; 
@@ -136,31 +124,28 @@ Cursos
 </section>
 
 <!-- MODAL -->
-<div id="modalDelete" class="modal">
+<div id="addFormModal" class="modal">
     <div class="modal-background"></div>
     <div class="modal-content">
-        <div class="box has-text-centered">
-            <article class="media">
-                <div class="media-left">
-                    <p class="is-size-1 has-text-danger">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </p>
-                </div>
-                <div class="media-content">
-                    <div class="content">
-                        <p>¿Seguro que desea eliminar el curso <strong><span id="eliminarCurso"></span></strong> ?</p>
-                        <input type="hidden" id="course_id">
-                    </div>
-                </div>
-            </article>
-            <button class="button is-success" onclick="deleteCouse()">Confirmar</button>
-            <button class="button is-danger jb-modal-close">Cancelar</button>
+        <div class="box ">
+            <div class="field">
+                <label class="label" for="type_description">Tipo de certificado</label>
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" id="type_description" name="type_description" placeholder="Tipo" onkeyup="mayus(this)">
+                    <span class="icon is-small is-left"><i class="fa-sharp fa-solid fa-certificate"></i></span>
+                </p>
+                <input type="hidden" id="type_id">
+            </div>
+            <div class="field">
+                
+                <button class="button is-success" id="buttonSave" >Guardar</button>
+                <button class="button is-danger jb-modal-close">Cancelar</button>
+            </div>
         </div>
 
     </div>
 </div>
 <!-- MODAL -->
-
 <script>
     var base_url;
 
@@ -168,39 +153,92 @@ Cursos
         base_url = $('#base_url').val();
     };
 
-    function showModalDelete(course_id,course_name) {
-        $('#modalDelete').addClass('is-active');
-        $('#course_id').val(course_id);
-        $('#eliminarCurso').html(course_name);
+    function formModal(add) {
+        $('#addFormModal').addClass('is-active');
+        if(add == 'add'){
+            clear();
+            $('#buttonSave').attr('onclick','addCertificateType()');
+        }else if(add == 'edit'){
+            $('#buttonSave').attr('onclick','saveCertificateType()');
+        }
     }
     
-    function deleteCouse() {
-        let controller = `${base_url}/admin/delete_course`;
-        let course_id = $('#course_id').val();
+    function addCertificateType() {
+        let controller = `${base_url}/admin/add_type_description`;
+        let typeDescription = $('#type_description').val();
 
         $.ajax({
             url: controller,
             type: "POST",
             data: {
-                course_id: course_id
+                typeDescription:typeDescription
             },
             beforeSend: () => {},
             complete: (data) => {},
             success: (response) => {
-                let producto = JSON.parse(response);
-                $('#nombre_producto').val(producto.nombre_producto);
-                $('#unidad').val(producto.unidad);
-                $('#precio_mayor').val(producto.precio_mayor);
-                $('#precio_menor').val(producto.precio_menor);
-                $('#id_producto').val(producto.id);
+                window.location.reload()
             },
             error: () => {
                 alert("error");
             }
-        })
+        });
+    }
+
+    function editCertificateType(type){
+        let controller = `${base_url}/admin/get_type_description`;
+        $.ajax({
+            url: controller,
+            type: "POST",
+            data: {
+                type:type
+            },
+            beforeSend: () => {},
+            complete: (data) => {},
+            success: (response) => {
+                let res = JSON.parse(response);
+                formModal('edit');
+                $('#type_id').val(`${res['certificatetype_id']}`);
+                $('#type_description').val(`${res['certificatetype_description']}`);
+            },
+            error: () => {
+                alert("error");
+            }
+        });
+        
+    }
+    
+    function saveCertificateType(){
+        let controller = `${base_url}/admin/save_certificatetype`;
+        let typeId = $('#type_id').val();
+        let typeDescription = $('#type_description').val();
+        $.ajax({
+            url: controller,
+            type: "POST",
+            data: {
+                typeId : typeId,
+                typeDescription : typeDescription,
+            },
+            beforeSend: () => {},
+            complete: (data) => {},
+            success: (response) => {
+                window.location.reload();
+            },
+            error: () => {
+                alert("error");
+            }
+        });
+        
+    }
+
+    function clear() {
+        $('#type_id').val('');
+        $('#type_description').val('');
+    }
+
+    function mayus(e) {
+        e.value = e.value.toUpperCase();
     }
 </script>
-
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         // Functions to open and close a modal
@@ -249,6 +287,4 @@ Cursos
         });
     });
 </script>
-<?= $this->endSection() ?>
-
 <?= $this->endSection() ?>

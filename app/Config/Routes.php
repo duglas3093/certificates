@@ -55,6 +55,7 @@ $routes->group('admin',['namespace' => 'App\Controllers\admin','filter'=>'auth:a
     $routes->post('store_student','Student::store');
     $routes->get('edit_student/(:num)','Student::edit/$1');
     $routes->post('update_student','Student::update');
+    
     // courses
     $routes->get('courses','Course::index');
     $routes->get('add_course','Course::add');
@@ -63,7 +64,15 @@ $routes->group('admin',['namespace' => 'App\Controllers\admin','filter'=>'auth:a
     $routes->get('certificates_course/(:num)','Course::certificatesCourse/$1');
     $routes->post('update_course','Course::update');
     $routes->post('delete_course','Course::delete');
-    //Models
+    
+    //CertificateType
+    $routes->get('certificates-types','CertificateType::index');
+    $routes->post('add_type_description','CertificateType::add');
+    $routes->post('get_type_description','CertificateType::getCertificateType');
+    $routes->post('save_certificatetype','CertificateType::update');
+    
+    //CertificateTemplate
+
     $routes->get('models','Course::index');
     $routes->get('add_course','Course::add');
     $routes->post('store_course','Course::store');
