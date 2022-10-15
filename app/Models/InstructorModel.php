@@ -4,18 +4,19 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class InstructionTypesModel extends Model
+class InstructorModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'instruction_types';
-    protected $primaryKey       = 'instructiontype_id';
+    protected $table            = 'instructor';
+    protected $primaryKey       = 'instructor_id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'instructiontype_description'
+        'instructor_name',
+        'status_id'
     ];
 
     // Dates

@@ -48,13 +48,22 @@ $routes->group('auth',['namespace'=>'App\Controllers\Auth'],function($routes){
 
 
 $routes->group('admin',['namespace' => 'App\Controllers\admin','filter'=>'auth:admin'],function($routes){
+    //Dashboard
     $routes->get('dashboard','Dashboard::index');
+
     // Students
     $routes->get('students','Student::index');
     $routes->get('add_student','Student::add');
     $routes->post('store_student','Student::store');
     $routes->get('edit_student/(:num)','Student::edit/$1');
     $routes->post('update_student','Student::update');
+    
+    // Instructors
+    $routes->get('instructors','Instructor::index');
+    $routes->get('add_instructor','Instructor::add');
+    $routes->post('store_instructor','Instructor::store');
+    $routes->get('edit_instructor/(:num)','Instructor::edit/$1');
+    $routes->post('update_instructor','Instructor::update');
     
     // courses
     $routes->get('courses','Course::index');
@@ -65,6 +74,15 @@ $routes->group('admin',['namespace' => 'App\Controllers\admin','filter'=>'auth:a
     $routes->post('update_course','Course::update');
     $routes->post('delete_course','Course::delete');
     
+    //Users
+    //Categories
+    //Certificate Cast
+
+
+
+
+
+
     //CertificateType
     $routes->get('certificates-types','CertificateType::index');
     $routes->post('add_type_description','CertificateType::add');
