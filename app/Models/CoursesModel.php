@@ -16,17 +16,11 @@ class CoursesModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'course_name',
-        'course_objetive',
-        'course_duration',
+        'course_description',
         'course_stardate',
         'course_enddate',
-        'course_syllabus',
-        'course_instructor',
-        'course_place',
-        'course_qualifies',
-        'user_id',
+        'instructor_id',
         'status_id',
-        'instructiontype_id',
     ];
 
     // Dates

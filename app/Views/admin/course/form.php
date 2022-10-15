@@ -12,6 +12,60 @@
             <p class="is-danger help"><?= session('errors.course_name') ?></p>
         </div>
     </div>
+    <div class="column is-12">
+        <div class="field">
+            <label class="label" for="instructor_id">Instructor<span class="has-text-danger">*</span> </label>
+            <div class="control has-icons-left has-icons-right">
+                <div class="select">
+                    <select name="instructor_id">
+                        <?php foreach($instructors as $instructor): ?>
+                            <option value="<?= $instructor['instructor_id'] ?>" <?= $instructor['instructor_id'] == (isset($course['instructor_id']) ? $course['instructor_id']:"") ? "selected":"" ?>><?= $instructor['instructor_name'] ?></option>
+                        <?php endforeach;?>
+                    </select>
+                    <span class="icon is-small is-left">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    </span>
+                </div>
+            </div>
+            <p class="is-danger help"><?= session('errors.instructor_id') ?></p>
+        </div>
+    </div>
+    
+    <div class="column is-6">
+        <div class="field">
+            <label class="label" for="course_stardate">Fecha Inicio<span class="has-text-danger">*</span> </label>
+            <div class="control has-icons-left has-icons-right">
+                <input class="input" name="course_stardate" value="<?= old('course_stardate') ?? (isset($course['course_stardate']) ? $course['course_stardate']:"") ?>" type="date">
+                <span class="icon is-small is-left">
+                <i class="fa-solid fa-calendar-days"></i>
+                </span>
+            </div>
+            <p class="is-danger help"><?= session('errors.course_stardate') ?></p>
+        </div>
+    </div>
+    <div class="column is-6">
+        <div class="field">
+            <label class="label" for="course_enddate">Fecha Fin<span class="has-text-danger">*</span> </label>
+            <div class="control has-icons-left has-icons-right">
+                <input class="input" name="course_enddate" value="<?= old('course_enddate') ?? (isset($course['course_enddate']) ? $course['course_enddate']:"") ?>" type="date">
+                <span class="icon is-small is-left">
+                <i class="fa-solid fa-calendar-days"></i>
+                </span>
+            </div>
+            <p class="is-danger help"><?= session('errors.course_enddate') ?></p>
+        </div>
+    </div>
+    <div class="column is-12">
+        <div class="field">
+            <label class="label" for="course_description">Descripción<span class="has-text-danger">*</span> </label>
+            <div class="control">
+                <textarea class="textarea" name="course_description" id="course_description" placeholder="Descripción del curso">
+                    <?= old('course_description') ?? (isset($course['course_description']) ? $course['course_description']:"") ?>
+                </textarea>
+            </div>
+            <p class="is-danger help"><?= session('errors.course_description') ?></p>
+        </div>
+    </div>
     
     <?php if(isset($course)): ?>
     <div class="column is-6-mobile is-4">

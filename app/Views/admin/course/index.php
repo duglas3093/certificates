@@ -57,12 +57,10 @@ Cursos
                                         <span class="check"></span>
                                     </label>
                                 </th>
-                                <!-- <th></th> -->
                                 <th>Curso</th>
+                                <th>Instructor</th>
+                                <th>Duracion</th>
                                 <th>Fecha</th>
-                                <th>Creado por</th>
-                                <!-- <th>Email</th> -->
-                                <!-- <th>Created</th> -->
                                 <th></th>
                             </tr>
                         </thead>
@@ -78,9 +76,10 @@ Cursos
                                         <span class="check"></span>
                                     </label>
                                 </td>
-                                <td data-label="Curso"><?= "{$course['course_name']}" ?></td>
+                                <td data-label="Curso"><?= $course['course_name'] ?></td>
+                                <td data-label="Instructor"><?= $course['instructor_name'] ?></td>
+                                <td data-label="Duracion"><?= "{$course['course_stardate']} - {$course['course_enddate']}" ?></td>
                                 <td data-label="Fecha"><?= $course['created_at'] ?></td>
-                                <td data-label="Creado por"><?= $course['user_id'] ?></td>
                                 <td class="is-actions-cell">
                                     <div class="buttons is-right">
                                         <a class="button is-small is-primary" title="Editar" href="<?= base_url("admin/edit_student/{$course['course_id']}") ?>">
