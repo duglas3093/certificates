@@ -15,7 +15,8 @@ class Course extends BaseController{
         $courseModel = model('CoursesModel');
         $data['courses'] = $courseModel
                             ->join('instructor i','i.instructor_id = courses.instructor_id','LEFT')
-                            ->select('courses.*,i.instructor_name')
+                            ->join('status s','s.status_id = courses.status_id','LEFT')
+                            ->select('courses.*,i.instructor_name,s.status_description')
                             ->where('courses.status_id',self::STATUS)
                             ->paginate(self::PAGINATION);
         $data['pager'] = $courseModel->pager;
@@ -34,6 +35,8 @@ class Course extends BaseController{
         if(!$data['course'] = $courseModel->where('course_id', $course_id)->first()){
             throw PageNotFoundException::forPageNotFound();
         }
+        $instructorModel = model('InstructorModel');
+        $data['instructors'] = $instructorModel->where('status_id', '1')->findAll();
         $data['session'] = session()->get();
         $statusModel = model('StatusModel');
         $data['status'] = $statusModel->where('status_code',1)->findAll();
@@ -44,7 +47,7 @@ class Course extends BaseController{
         $validation = service('validation');
         $validation->setRules([
             'course_name'           => 'required|alpha_space',
-            'course_description'    => 'required|alpha_space',
+            'course_description'    => 'required',
             'course_stardate'       => 'required',
             'course_enddate'        => 'required',
             'instructor_id'         => 'required',

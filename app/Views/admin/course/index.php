@@ -60,6 +60,7 @@ Cursos
                                 <th>Curso</th>
                                 <th>Instructor</th>
                                 <th>Duracion</th>
+                                <th>Estado</th>
                                 <th>Fecha</th>
                                 <th></th>
                             </tr>
@@ -79,10 +80,11 @@ Cursos
                                 <td data-label="Curso"><?= $course['course_name'] ?></td>
                                 <td data-label="Instructor"><?= $course['instructor_name'] ?></td>
                                 <td data-label="Duracion"><?= "{$course['course_stardate']} - {$course['course_enddate']}" ?></td>
+                                <td data-label="Estado"><?= $course['status_description'] ?></td>
                                 <td data-label="Fecha"><?= $course['created_at'] ?></td>
                                 <td class="is-actions-cell">
                                     <div class="buttons is-right">
-                                        <a class="button is-small is-primary" title="Editar" href="<?= base_url("admin/edit_student/{$course['course_id']}") ?>">
+                                        <a class="button is-small is-primary" title="Editar" href="<?= base_url("admin/edit_course/{$course['course_id']}") ?>">
                                             <span class="icon"><i class="fa-solid fa-pencil"></i></span>
                                         </a>
                                         <button class="button is-small is-danger jb-modal" data-target="sample-modal"

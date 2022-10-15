@@ -59,9 +59,7 @@
         <div class="field">
             <label class="label" for="course_description">Descripción<span class="has-text-danger">*</span> </label>
             <div class="control">
-                <textarea class="textarea" name="course_description" id="course_description" placeholder="Descripción del curso">
-                    <?= old('course_description') ?? (isset($course['course_description']) ? $course['course_description']:"") ?>
-                </textarea>
+                <textarea class="textarea" name="course_description" id="course_description" placeholder="Descripción del curso"><?= (old('course_description') ?? (isset($course['course_description']) ? $course['course_description']:"")) ?></textarea>
             </div>
             <p class="is-danger help"><?= session('errors.course_description') ?></p>
         </div>
@@ -90,7 +88,7 @@
     <div class="column is-12">
         <div class="field">
             <p class="control">
-                <input type="submit" class="button is-success" value="<?= isset($student) ? "Actualizar":"Crear" ?>">
+                <input type="submit" class="button is-success" value="<?= isset($course) ? "Actualizar":"Crear" ?>">
                 <a href="javascript:history.back()" class="button is-danger">
                     Cancelar
                 </a>
