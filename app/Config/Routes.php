@@ -72,6 +72,10 @@ $routes->group('admin',['namespace' => 'App\Controllers\admin','filter'=>'auth:a
     $routes->post('save_certificatetype','CertificateType::update');
     
     //CertificateTemplate
+    $routes->get('certificates-template','CertificateTemplate::index');
+    $routes->get('add_certificate_template','CertificateTemplate::add');
+    
+    //CertificateTemplate
 
     $routes->get('models','Course::index');
     $routes->get('add_course','Course::add');
