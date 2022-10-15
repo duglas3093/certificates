@@ -19,6 +19,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="<?= base_url(route_to('admin/instructors')) ?>" class="router-link-active has-icon <?= service('request')->uri->getPath() == 'admin/instructors' ? 'is-active':'' ?>">
+                            <span class="icon"><i class="fa-solid fa-chalkboard-user"></i></span>
+                            <span class="menu-item-label">instructores</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="<?= base_url(route_to('admin/courses')) ?>" class="router-link-active has-icon <?= service('request')->uri->getPath() == 'admin/courses' ? 'is-active':'' ?>">
                             <span class="icon"><i class="fa-solid fa-school"></i></span>
                             <span class="menu-item-label">Cursos</span>
@@ -31,13 +37,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url(route_to('admin/courses')) ?>" class="router-link-active has-icon <?= service('request')->uri->getPath() == 'admin/models' ? 'is-active':'' ?>">
+                        <a href="<?= base_url(route_to('admin/categories')) ?>" class="router-link-active has-icon <?= service('request')->uri->getPath() == 'admin/categories' ? 'is-active':'' ?>">
                             <span class="icon"><i class="fa-solid fa-hotel"></i></span>
-                            <span class="menu-item-label">Modelo</span>
+                            <span class="menu-item-label">Categorias</span>
                         </a>
                     </li>
                     <li>
-                        <a href="<?= base_url(route_to('admin/courses')) ?>" class="router-link-active has-icon <?= service('request')->uri->getPath() == 'admin/' ? 'is-active':'' ?>">
+                        <a href="<?= base_url(route_to('admin/cast')) ?>" class="router-link-active has-icon <?= service('request')->uri->getPath() == 'admin/cast' ? 'is-active':'' ?>">
                             <span class="icon"><i class="fa-solid fa-scroll"></i></span>
                             <span class="menu-item-label">Emitidos</span>
                         </a>
