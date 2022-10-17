@@ -76,6 +76,14 @@ $routes->group('admin',['namespace' => 'App\Controllers\admin','filter'=>'auth:a
     
     //Users
     //Categories
+    $routes->get('categories','Categories::index');
+    $routes->get('add_category','Categories::add');
+    $routes->post('store_category','Categories::store');
+    $routes->get('edit_category/(:num)','Categories::edit/$1');
+    $routes->get('certificates_category/(:num)','Categories::certificatesCourse/$1');
+    $routes->post('update_category','Categories::update');
+    $routes->post('delete_category','Categories::delete');
+
     //Certificate Cast
 
 
