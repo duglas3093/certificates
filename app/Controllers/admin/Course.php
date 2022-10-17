@@ -16,7 +16,8 @@ class Course extends BaseController{
         $data['courses'] = $courseModel
                             ->join('instructor i','i.instructor_id = courses.instructor_id','LEFT')
                             ->join('status s','s.status_id = courses.status_id','LEFT')
-                            ->select('courses.*,i.instructor_name,s.status_description')
+                            ->join('categories c','c.category_id = courses.category_id','LEFT')
+                            ->select('courses.*,i.instructor_name,s.status_description,c.category_description')
                             ->where('courses.status_id',self::STATUS)
                             ->paginate(self::PAGINATION);
         $data['pager'] = $courseModel->pager;
@@ -27,6 +28,8 @@ class Course extends BaseController{
         $data['session'] = session()->get();
         $instructorModel = model('InstructorModel');
         $data['instructors'] = $instructorModel->where('status_id', '1')->findAll();
+        $categoryModel = model('CategoriesModel');
+        $data['categories'] = $categoryModel->findAll();
         return view('admin/course/add',$data);
     }
 
@@ -37,6 +40,8 @@ class Course extends BaseController{
         }
         $instructorModel = model('InstructorModel');
         $data['instructors'] = $instructorModel->where('status_id', '1')->findAll();
+        $categoryModel = model('CategoriesModel');
+        $data['categories'] = $categoryModel->findAll();
         $data['session'] = session()->get();
         $statusModel = model('StatusModel');
         $data['status'] = $statusModel->where('status_code',1)->findAll();
@@ -50,6 +55,7 @@ class Course extends BaseController{
             'course_description'    => 'required',
             'course_stardate'       => 'required',
             'course_enddate'        => 'required',
+            'category_id'           => 'required',
             'instructor_id'         => 'required',
         ]);
 
@@ -80,6 +86,7 @@ class Course extends BaseController{
             'course_description'    => 'required|alpha_space',
             'course_stardate'       => 'required',
             'course_enddate'        => 'required',
+            'category_id'           => 'required',
             'instructor_id'         => 'required',
         ]);
         
@@ -98,6 +105,7 @@ class Course extends BaseController{
             'course_description'   => trim($this->request->getVar('course_description')),
             'course_stardate'      => trim($this->request->getVar('course_stardate')),
             'course_enddate'       => trim($this->request->getVar('course_enddate')),
+            'category_id'          => trim($this->request->getVar('category_id')),
             'instructor_id'        => trim($this->request->getVar('instructor_id')),
         ]);
         return redirect()->route('admin/courses')->with('msg',[

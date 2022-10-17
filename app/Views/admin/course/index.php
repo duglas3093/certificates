@@ -58,6 +58,7 @@ Cursos
                                     </label>
                                 </th>
                                 <th>Curso</th>
+                                <th>Categoria</th>
                                 <th>Instructor</th>
                                 <th>Duracion</th>
                                 <th>Estado</th>
@@ -78,6 +79,7 @@ Cursos
                                     </label>
                                 </td>
                                 <td data-label="Curso"><?= $course['course_name'] ?></td>
+                                <td data-label="Categoria"><?= $course['category_description'] ?></td>
                                 <td data-label="Instructor"><?= $course['instructor_name'] ?></td>
                                 <td data-label="Duracion"><?= "{$course['course_stardate']} - {$course['course_enddate']}" ?></td>
                                 <td data-label="Estado"><?= $course['status_description'] ?></td>

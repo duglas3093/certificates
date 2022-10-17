@@ -31,7 +31,26 @@
         </div>
     </div>
     
-    <div class="column is-6">
+    <div class="column is-12-mobile is-4">
+        <div class="field">
+            <label class="label" for="category_id">Categoria</label>
+            <div class="control has-icons-left has-icons-right">
+                <div class="select">
+                    <select name="category_id">
+                        <option value="0">-Seleccione una categoria-</option>
+                        <?php foreach($categories as $category): ?>
+                            <option value="<?= $category['category_id'] ?>" <?= $category['category_id'] == (isset($course['category_id']) ? $course['category_id']:"") ? "selected":"" ?>><?= $category['category_description'] ?></option>
+                        <?php endforeach;?>
+                    </select>
+                    <span class="icon is-small is-left">
+                        <i class="fa-solid fa-square-check"></i>
+                    </span>
+                </div>
+            </div>
+            <p class="is-danger help"><?= session('errors.category_description') ?></p>
+        </div>
+    </div>
+    <div class="column is-4">
         <div class="field">
             <label class="label" for="course_stardate">Fecha Inicio<span class="has-text-danger">*</span> </label>
             <div class="control has-icons-left has-icons-right">
@@ -43,7 +62,7 @@
             <p class="is-danger help"><?= session('errors.course_stardate') ?></p>
         </div>
     </div>
-    <div class="column is-6">
+    <div class="column is-4">
         <div class="field">
             <label class="label" for="course_enddate">Fecha Fin<span class="has-text-danger">*</span> </label>
             <div class="control has-icons-left has-icons-right">

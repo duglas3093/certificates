@@ -20,6 +20,7 @@ class CoursesModel extends Model
         'course_stardate',
         'course_enddate',
         'instructor_id',
+        'category_id',
         'status_id',
     ];
 
