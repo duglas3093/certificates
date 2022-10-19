@@ -73,6 +73,9 @@ $routes->group('admin',['namespace' => 'App\Controllers\admin','filter'=>'auth:a
     $routes->get('certificates_course/(:num)','Course::certificatesCourse/$1');
     $routes->post('update_course','Course::update');
     $routes->post('delete_course','Course::delete');
+    // certificateTemplate
+    $routes->get('course_certificate/(:num)','Course::courseCertificate/$1');
+    $routes->post('store_course_certificate','Course::updateCertificateTemplate');
     
     //Users
     //Categories
@@ -85,7 +88,13 @@ $routes->group('admin',['namespace' => 'App\Controllers\admin','filter'=>'auth:a
     $routes->post('delete_category','Categories::delete');
 
     //Certificate Cast
-
+    $routes->get('casts','Cast::index');
+    $routes->get('add_category','Categories::add');
+    $routes->post('store_category','Categories::store');
+    $routes->get('edit_category/(:num)','Categories::edit/$1');
+    $routes->get('certificates_category/(:num)','Categories::certificatesCourse/$1');
+    $routes->post('update_category','Categories::update');
+    $routes->post('delete_category','Categories::delete');
 
 
 

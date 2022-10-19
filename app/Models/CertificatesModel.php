@@ -17,12 +17,6 @@ class CertificatesModel extends Model
     protected $allowedFields    = [
         'cetificate_qualification',
         'course_id',
-        'student_id',
-        'inscribe_id',
-        'certificatemodelo_id',
-        'certificatemodelo_id',
-        'user_id',
-        'status_id',
     ];
 
     // Dates

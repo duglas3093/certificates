@@ -71,7 +71,8 @@ class Course extends BaseController{
         $courseData = array_merge($formCourse,$register);
         $courses = new EntitiesCourse($courseData);
         $model = model('CoursesModel');
-        $model->save($courses);
+        $model->insert($courses);
+        $this->createCourseCertificateTemplate($model->getInsertID());
         return redirect()->route('admin/courses')->with('msg',[
             'type' => 'success',
             'body' => 'Curso registrado con exito!'
@@ -125,14 +126,79 @@ class Course extends BaseController{
         $model->save($course);
         echo json_encode("ok");
     }
+    
+    private function createCourseCertificateTemplate(int $course_id){
+        $templateModel = model('CertificateTemplateModel');
+        $template = [
+            'certificatetem_title' => 'Certificado',
+            'certificatetem_description' => '',
+            'certificatetem_template' => 1,
+            'certificatetem_background' => 'certificate_default.png',
+            'course_id' => $course_id,
+        ];
+        $templateModel->save($template);
+    }
 
+    public function courseCertificate(int $course_id){
+        $data['session'] = session()->get();
+        $templateModel = model('CertificateTemplateModel');
+        $data['template'] = $templateModel->select('certificate_template.*,c.course_name')
+                                        ->join('courses c','c.course_id = certificate_template.course_id','LEFT')
+                                        ->where('certificate_template.course_id', $course_id)
+                                        ->first();
+        if(!$data['template']){
+            throw PageNotFoundException::forPageNotFound();
+        }
+        
+        return view('admin/course/certificateTemplate',$data);
+    }
+    
+    public function updateCertificateTemplate(){
+        $validation = service('validation');
+        $validation->setRules([
+            'course_id'                      => 'required',
+            'certificatetem_id'              => 'required',
+            'certificatetem_title'           => 'required|alpha_space',
+            'certificatetem_template'        => 'required',
+        ]);
+        
+        if(!$validation->withRequest($this->request)->run()){
+            return redirect()->back()->withInput()->with('errors',$validation->getErrors());
+        }
+        
+        $model = model('CertificateTemplateModel');
+        if(!$model->where('certificatetem_id', (int)trim($this->request->getPost('certificatetem_id')))->first()){
+            throw PageNotFoundException::forPageNotFound();
+        }
+
+        $template = [
+            'certificatetem_id'             => $this->request->getPost('certificatetem_id'),
+            'course_id'                     => trim($this->request->getVar('course_id')),
+            'certificatetem_title'          => trim($this->request->getVar('certificatetem_title')),
+            'certificatetem_description'    => trim($this->request->getVar('certificatetem_description')),
+            'certificatetem_template'       => trim($this->request->getPost('certificatetem_template')),
+        ];
+        
+        if($this->request->getFile('certificatetem_background') != ""){
+            $loadImage = $this->_upload();
+            $template_background = [ 'certificatetem_background'     => $loadImage  ];
+            $template = array_merge($template,$template_background);
+        }
+
+
+        $model->save($template);
+        return redirect()->route('admin/courses')->with('msg',[
+            'type' => 'success',
+            'body' => 'El certificado del curso se ha actualizado con exito!'
+        ]);
+    }
+    
     private function _upload(){
         $newName = "";
-        if ($imageFile = $this->request->getFile('student_photo')) {
+        if ($imageFile = $this->request->getFile('certificatetem_background')) {
             if ($imageFile->isValid() && !$imageFile->hasMoved()) {
                 $newName = $imageFile->getRandomName();
-                // $imageFile->move(WRITEPATH."uploads/images/students/",$newName);
-                $imageFile->move(ROOTPATH."public/uploads/images/students/",$newName);
+                $imageFile->move(ROOTPATH."public/uploads/images/certificateBackground/",$newName);
             }
         }
         return $newName;

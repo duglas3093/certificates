@@ -8,19 +8,18 @@ class CertificateTemplateModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'certificate_template';
-    protected $primaryKey       = 'certificatemodelo_id';
+    protected $primaryKey       = 'certificatetem_id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'cetificatetem_title',
-        'cetificatetem_description',
-        'cetificatetem_template',
-        'cetificatetem_background',
-        'cetificatetype_id',
-        'user_id',
+        'certificatetem_title',
+        'certificatetem_description',
+        'certificatetem_template',
+        'certificatetem_background',
+        'course_id',
     ];
 
     // Dates

@@ -89,6 +89,9 @@ Cursos
                                         <a class="button is-small is-primary" title="Editar" href="<?= base_url("admin/edit_course/{$course['course_id']}") ?>">
                                             <span class="icon"><i class="fa-solid fa-pencil"></i></span>
                                         </a>
+                                        <a class="button is-small is-warning" title="Certificado" href="<?= base_url("admin/course_certificate/{$course['course_id']}") ?>">
+                                            <span class="icon"><i class="fa-solid fa-certificate"></i></span>
+                                        </a>
                                         <button class="button is-small is-danger jb-modal" data-target="sample-modal"
                                             type="button" onclick="showModalDelete(<?= $course['course_id'] ?>,'<?= $course['course_name'] ?>')">
                                             <span class="icon"><i class="mdi mdi-trash-can"></i></span>
